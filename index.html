@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>User Account Editing</title>
+    <style>
+        .item, table{
+            background-color: #f1c7b8;
+            border-radius: 5px;
+            text-align: left;
+            padding: 10px;
+            width: 300px;
+            margin: 5px;
+        }
+        html {
+            background-color: #C68D71;
+            font-family: Helvetica;
+            color: #5C1F00;
+        }
+
+        input {
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .editInput{
+            border-radius: 0px; /*doesn't override'*/
+            margin: 0px;
+        }
+        button {
+            border-radius: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>User Account Manager</h1>
+<span class="app">
+    <script type="text/template" id="create-user-template">
+        <form id="userInfo">
+            <table>
+                <tr>
+                    <td>First name:</td>
+                    <td><input type="text" id="firstName" required></td>
+                </tr>
+                <tr>
+                    <td>Last name:</td>
+                    <td><input type="text" id="lastName"></td>
+                </tr>
+                <tr>
+                    <td>E-mail:</td>
+                    <td><input type="email" id="email"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="addUser" type="submit">add user</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </script>
+    <script type="text/template" id="user-template">
+        <div class='item'>First name: <%= firstName %><br>Last name: <%= lastName %> <br>E-mail: <%= email %><br>ID: <%=
+            id %> <br>
+            <button class='delete' id=this.model.id>delete user</button>
+            <button class='edit' type='submit'>edit</button>
+        </div>
+    </script>
+    <script type="text/template" id="edit-user-template">
+        <form id="editUser">
+            <table>
+                <tr>
+                    <td>First name:</td>
+                    <td><input type="text" id="editFirstName" required value="<%= firstName %>" class="editInput"></td>
+                </tr>
+                <tr>
+                    <td>Last name:</td>
+                    <td><input type="text" id="editLastName" value="<%= lastName %>" class="editInput"></td>
+                </tr>
+                <tr>
+                    <td>E-mail:</td>
+                    <td><input type="email" id="editEmail" value="<%= email %>" class="editInput"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="editUser" type="submit">save</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </script>
+</span>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+<script src="Models.js"></script>
+<script src="Views.js"></script>
+</body>
+</html>
